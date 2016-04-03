@@ -11,7 +11,7 @@ public class RdrItemType implements Serializable{
 
     private static final Map<String, RdrItemType> TYPES = new HashMap<String, RdrItemType>();
 
-    public static final RatingType PRODUCT = new RatingType("PRODUCT");
+    public static final RdrItemType PRODUCT = new RdrItemType("PRODUCT");
 
     public static RdrItemType getInstance(final String type) {
         return TYPES.get(type);

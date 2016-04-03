@@ -22,12 +22,6 @@
 		<version>3.1.15-GA</version>
 	</dependency>
 	
-	<!-- Broadleaf framework -->
-	<dependency>
-		<groupId>com.rayondart</groupId>
-		<artifactId>core</artifactId>
-		<version>1.0</version>
-	</dependency>
 	
   	
   	<!-- Mahout core -->
