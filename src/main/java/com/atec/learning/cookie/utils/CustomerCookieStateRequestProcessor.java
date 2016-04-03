@@ -13,7 +13,6 @@ import org.broadleafcommerce.common.security.util.CookieUtils;
 import org.broadleafcommerce.common.web.AbstractBroadleafWebRequestProcessor;
 import org.broadleafcommerce.common.web.BroadleafRequestContext;
 import org.broadleafcommerce.profile.core.domain.Customer;
-import org.broadleafcommerce.profile.web.core.security.CustomerStateRequestProcessor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.ApplicationEventPublisherAware;
@@ -28,11 +27,8 @@ public class CustomerCookieStateRequestProcessor extends AbstractBroadleafWebReq
 	@Resource(name = "blCookieUtils")
 	protected CookieUtils cookieUtils;
 	
-	@Resource(name="blCustomerStateRequestProcessor")
-	protected CustomerStateRequestProcessor customer;
-
-
-	
+//	@Resource(name="blCustomerStateRequestProcessor")
+//	protected CustomerStateRequestProcessor customer;
 	
 	@Value("${rayondart.cookies.name}")
 	public final static String rayondartCookieName=".rayondart";

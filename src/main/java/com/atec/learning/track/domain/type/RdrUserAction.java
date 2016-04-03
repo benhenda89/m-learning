@@ -1,37 +1,32 @@
-package com.atec.learning.track.domain;
+package com.atec.learning.track.domain.type;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * 
- * @author takwa
- *
- */
-public class UserNote {
+public class RdrUserAction implements Serializable{
+private static final long serialVersionUID = 1L;
 	
-	private static final long serialVersionUID = 1L;
+	private static final Map<String, RdrUserAction> TYPES = new HashMap<String, RdrUserAction>();
 	
-	private static final Map<String, UserNote> TYPES = new HashMap<String, UserNote>();
-	
-	public static final UserNote VIEW = new UserNote("1", "view product");
-	public static final UserNote LIKE = new UserNote("2", "like product");
-	public static final UserNote RATE = new UserNote("3", "rate product");
-	public static final UserNote ACHAT = new UserNote("4", "achat product");
+	public static final RdrUserAction VIEW = new RdrUserAction("VIEW", "view");
+	public static final RdrUserAction LIKE = new RdrUserAction("LIKE", "like");
+	public static final RdrUserAction RATE = new RdrUserAction("RATE", "rate");
+	public static final RdrUserAction ACHAT = new RdrUserAction("ACHAT", "achat");
 	
 	
-	public static UserNote getInstance(final String type){
+	public static RdrUserAction getInstance(final String type){
 		return TYPES.get(type);
 	}
 	
 	private String type;
     private String friendlyType;
     
-    public UserNote(){
+    public RdrUserAction(){
     	
     }
     
-    public UserNote(final String type, final String friendlyType) {
+    public RdrUserAction(final String type, final String friendlyType) {
         this.friendlyType = friendlyType;
         setType(type);
     }
@@ -71,7 +66,7 @@ public class UserNote {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        UserNote other = (UserNote) obj;
+        RdrUserAction other = (RdrUserAction) obj;
         if (type == null) {
             if (other.type != null)
                 return false;
@@ -79,5 +74,4 @@ public class UserNote {
             return false;
         return true;
     }
-
 }
