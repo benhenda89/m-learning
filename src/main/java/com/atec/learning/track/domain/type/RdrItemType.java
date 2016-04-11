@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.broadleafcommerce.core.rating.service.type.RatingType;
-
 public class RdrItemType implements Serializable{
 	private static final long serialVersionUID = 1L;
 
@@ -37,7 +35,7 @@ public class RdrItemType implements Serializable{
         }
     }
 
-    @Override
+    
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -45,7 +43,7 @@ public class RdrItemType implements Serializable{
         return result;
     }
 
-    @Override
+    
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

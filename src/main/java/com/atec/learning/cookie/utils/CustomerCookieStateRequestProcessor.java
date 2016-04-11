@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.codec.digest.Md5Crypt;
 import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang.BooleanUtils;
 import org.broadleafcommerce.common.security.util.CookieUtils;
 import org.broadleafcommerce.common.web.AbstractBroadleafWebRequestProcessor;
 import org.broadleafcommerce.common.web.BroadleafRequestContext;
@@ -30,10 +31,16 @@ public class CustomerCookieStateRequestProcessor extends AbstractBroadleafWebReq
 //	@Resource(name="blCustomerStateRequestProcessor")
 //	protected CustomerStateRequestProcessor customer;
 	
-	@Value("${rayondart.cookies.name}")
-	public final static String rayondartCookieName=".rayondart";
+	@Value("${cookie.Max.Age}")
+	protected static String cookieMaxAge ;
 	
-	@Override
+	@Value("${cookie.Secure}")
+	protected static String cookieSecure;
+	
+	@Value("${rayondart.cookies.name}")
+	protected static String rayondartCookieName=".rayondart";
+	
+	
 	public void process(WebRequest request) {
 		HttpServletRequest req = BroadleafRequestContext.getBroadleafRequestContext().getRequest();
 		Cookie[] cookies = req.getCookies();
@@ -49,7 +56,7 @@ public class CustomerCookieStateRequestProcessor extends AbstractBroadleafWebReq
 				    Map<String, Object> ruleMap =(Map<String, Object>) request.getAttribute("blRuleMap",WebRequest.SCOPE_REQUEST);
 				    if (ruleMap != null) {
 			        customer=(Customer)ruleMap.get("customer");
-			        }
+			        			        }
 				    if(customer==null)
 				    {
 				    
@@ -61,21 +68,24 @@ public class CustomerCookieStateRequestProcessor extends AbstractBroadleafWebReq
 						Cookie newCookie = new Cookie(rayondartCookieName,encrypted1);
 						
 						newCookie.setPath("/");
-						 //24 heures 
-						newCookie.setMaxAge(60*60*24);
+						 //24 heures
+						
+						newCookie.setMaxAge(Integer.parseInt(cookieMaxAge));
 						  
-						newCookie.setSecure(false);
+						newCookie.setSecure(BooleanUtils.toBoolean(cookieSecure));
 						
 						BroadleafRequestContext.getBroadleafRequestContext().getResponse().addCookie(newCookie);
 				
 			}
 			}
+			 
+			
 			
 		} 
-		
+	
 	}
 
-	@Override
+
 	public void setApplicationEventPublisher(ApplicationEventPublisher arg0) {
 		// TODO Auto-generated method stub
 		
@@ -93,6 +103,8 @@ public class CustomerCookieStateRequestProcessor extends AbstractBroadleafWebReq
         return null;
 
     }
+
+
 	
 
 }

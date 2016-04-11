@@ -22,25 +22,25 @@ public class UserTrackDaoImpl implements UserTrackDao{
     protected EntityConfiguration entityConfiguration;
 	
     
-    @Override
+    
 	public UserTrack readTrackById(Long userTrackId) {
 		
 		return em.find(UserTrack.class, userTrackId);	
 	}
 
-    @Override
+    
 	public UserTrack add(UserTrack userTrack) {
 		return em.merge(userTrack);
 	}
 
 	
-    @Override
+    
 	public void remove(UserTrack userTrack) {
 		
 		em.remove(userTrack);
 	}
 
-    @Override
+    
 	public UserTrack readTrackByCustomerAndItem(Long customerId,
 			String itemType, Long itemValue) {
 		TypedQuery<UserTrack> q = em.createNamedQuery("READ_ALL_TRACKS_BY_CUSTOMER_AND_ITEM",UserTrack.class);
@@ -53,14 +53,14 @@ public class UserTrackDaoImpl implements UserTrackDao{
 		return userTracks;
 	}
 
-    @Override
+    
 	public List<UserTrack> readUserTracksByCustomerId(Long customerId) {
 		TypedQuery<UserTrack> q = em.createNamedQuery("READ_ALL_TRACKS_BY_CUSTOMER",UserTrack.class);
 		 q.setParameter("customerId",customerId);
 		return q.getResultList();
 	}
 
-    @Override
+    
 	public UserTrack create() {
 		
 		return (UserTrack) entityConfiguration.createEntityInstance(UserTrack.class.getName());

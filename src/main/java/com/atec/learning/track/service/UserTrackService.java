@@ -3,9 +3,6 @@ package com.atec.learning.track.service;
 import java.util.List;
 import java.util.Map;
 
-import org.broadleafcommerce.profile.core.domain.Customer;
-import org.springframework.web.servlet.handler.UserRoleAuthorizationInterceptor;
-
 import com.atec.learning.track.domain.UserTrack;
 import com.atec.learning.track.domain.type.RdrItemType;
 import com.atec.learning.track.exceptions.UserTrackExceptions;
@@ -31,13 +28,17 @@ public interface UserTrackService {
 	 * @param actionsUsers
 	 * @throws UserTrackExceptions 
 	 */
-	public  void updateUserProductsTracks  (Map<String,Map<String,Boolean>> actionsUsers, RdrCustomer customer) throws UserTrackExceptions; 
+	public  void updateUserProductsTracks  (Map<String,String> actionsUsers) throws UserTrackExceptions; 
 	/**
 	 * Calculer le score aprés chaque mise à jour sur un produit (Like, view, ...)
+
 	 * @param userTrack
 	 * @return
 	 * @throws UserTrackExceptions
 	 * @author takwa
 	 */
 	public double calculateScoreUserItem(UserTrack userTrack) throws UserTrackExceptions;
+	
+	
+	
 }

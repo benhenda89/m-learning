@@ -1,14 +1,15 @@
 package com.atec.learning.track.domain;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * 
- * @author takwa
+ * @author mahbouba
  *
  */
-public class UserNote {
+public class UserNote implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -55,7 +56,7 @@ public class UserNote {
 		return type;
 	}
 	
-	@Override
+	
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -63,7 +64,7 @@ public class UserNote {
         return result;
     }
 
-    @Override
+    
     public boolean equals(Object obj) {
         if (this == obj)
             return true;

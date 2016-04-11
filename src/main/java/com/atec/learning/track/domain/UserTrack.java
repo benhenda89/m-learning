@@ -65,9 +65,9 @@ public interface UserTrack extends Serializable{
 	
 	/**
 	 * set the value of trackView.
-	 * @param trackView
+	 * @param string
 	 */
-	public void setTrackView(boolean trackView);
+	public void setTrackView(Boolean string);
 	
 	/**
 	 * get a boolean result if the Item is buyed or not.
@@ -89,9 +89,9 @@ public interface UserTrack extends Serializable{
 	
 	/**
 	 * set the value of trackLike.
-	 * @param trackLike
+	 * @param string
 	 */
-	public void setTrackLike(boolean trackLike);
+	public void setTrackLike(Boolean string);
 	
 	/**
 	 * get a boolean result if the Item is Rated or not.
@@ -103,7 +103,7 @@ public interface UserTrack extends Serializable{
 	 * set the value of trackRated.
 	 * @param trackRated
 	 */
-	public void setTrackRated(boolean trackRated);
+	public void setTrackRated(Boolean trackRated);
 	
 	/**
 	 * get the score of User-Item.

@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Parameter;
 
 import com.atec.learning.track.domain.type.RdrItemType;
@@ -24,6 +23,7 @@ import com.rayondart.core.profile.domain.RdrCustomer;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class UserTrackImpl implements UserTrack{
 	
+	@SuppressWarnings("unused")
 	private static final Log LOG = LogFactory.getLog(UserTrackImpl.class);
 	private static final long serialVersionUID = 1L;
 	
@@ -105,10 +105,6 @@ public class UserTrackImpl implements UserTrack{
 		return trackView;
 	}
 	
-	public void setTrackView(boolean trackView) {
-		this.trackView = trackView;
-	}
-	
 	public boolean getTrackAchat() {
 		return trackAchat;
 	}
@@ -120,18 +116,13 @@ public class UserTrackImpl implements UserTrack{
 	public boolean getTrackLike() {
 		return trackLike;
 	}
-	
-	public void setTrackLike(boolean trackLike) {
-		this.trackLike = trackLike;
-	}
+
 	
 	public boolean getTrackRated() {
 		return trackRated;
 	}
 	
-	public void setTrackRated(boolean trackRated) {
-		this.trackRated = trackRated;
-	}
+
 	
 	public double getUserItemScore() {
 		return userItemScore;
@@ -140,4 +131,20 @@ public class UserTrackImpl implements UserTrack{
 	public void setUserItemScore(double userItemScore) {
 		this.userItemScore = userItemScore;
 	}
+	
+	public void setTrackView(Boolean string) {
+		this.trackView = trackView;
+		
+	}
+	
+	public void setTrackLike(Boolean string) {
+		this.trackLike = trackLike;
+		
+	}
+	
+	public void setTrackRated(Boolean trackRated) {
+		this.trackRated = trackRated;
+		
+	}
+
 }

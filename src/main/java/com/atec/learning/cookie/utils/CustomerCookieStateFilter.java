@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.broadleafcommerce.common.security.util.CookieUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -18,14 +19,15 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component("rdrCustomerCookieStateFilter")
 public class CustomerCookieStateFilter extends OncePerRequestFilter implements Ordered {
 	
-	
+	@Value("${cookie.Filter.Order}")
+	protected static int order ;
 
 	@Resource(name="rdrCustomerCookieStateRequest")
 	protected CustomerCookieStateRequestProcessor cookiefiltre;
 	
 	@Resource(name = "blCookieUtils")
 	protected CookieUtils cookieUtils;
-	@Override
+	
     public void doFilterInternal(HttpServletRequest baseRequest, HttpServletResponse baseResponse, FilterChain chain) throws IOException, ServletException {
 		 ServletWebRequest request = new ServletWebRequest(baseRequest, baseResponse);
 			
@@ -43,11 +45,11 @@ public class CustomerCookieStateFilter extends OncePerRequestFilter implements O
 	
     }
 	
-	@Override
+	
 	public int getOrder() {
 		//FilterChainOrder has been dropped from Spring Security 3
         //return FilterChainOrder.REMEMBER_ME_FILTER+1;
-        return 1501;
+        return order;
 	}
 
 }
