@@ -40,10 +40,7 @@ public class UserTrackImpl implements UserTrack{
 	 @Column(name = "TRACK_ID")
 	protected Long id;
 	 
-	@Column(name="CUSTOMER")
-	@ManyToOne
-	@JoinTable(name="RdrCustomer")
-	protected RdrCustomer customer;
+	
 	
 	@Column(name="ItemType")
 	protected String itemType;
@@ -63,8 +60,7 @@ public class UserTrackImpl implements UserTrack{
 	@Column(name="TrackRated")
 	protected boolean trackRated;
 	
-	@Column(name="UserItemScore")
-	protected double  userItemScore;
+	
 
 	public Long getId() {
 		return id;
@@ -75,13 +71,6 @@ public class UserTrackImpl implements UserTrack{
 	
 	
 
-	public RdrCustomer getCustomer() {
-		return customer;
-	}
-	
-	public void setCustomer(RdrCustomer customer) {
-		this.customer = customer;
-	}
 	
 	
 	
@@ -124,13 +113,7 @@ public class UserTrackImpl implements UserTrack{
 	
 
 	
-	public double getUserItemScore() {
-		return userItemScore;
-	}
 	
-	public void setUserItemScore(double userItemScore) {
-		this.userItemScore = userItemScore;
-	}
 	
 	public void setTrackView(Boolean string) {
 		this.trackView = trackView;

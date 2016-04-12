@@ -20,6 +20,8 @@ import org.broadleafcommerce.profile.web.core.CustomerState;
 import org.springframework.stereotype.Service;
 
 import com.atec.learning.track.dao.UserTrackDao;
+import com.atec.learning.track.domain.TrackPreferences;
+import com.atec.learning.track.domain.TrackReferencesImpl;
 import com.atec.learning.track.domain.UserNote;
 import com.atec.learning.track.domain.UserTrack;
 import com.atec.learning.track.domain.type.RdrItemType;
@@ -122,6 +124,7 @@ public class UserTrackServiceImpl implements UserTrackService {
 								Double.parseDouble(UserNote.ACHAT.getType()));
 			}
 		}
+		
 		return userScore;// the final value of userTrack
 	}
 
@@ -179,6 +182,8 @@ public class UserTrackServiceImpl implements UserTrackService {
 						LOG.trace(productId + ": ");
 
 						LOG.trace(mapAction.getValue());
+						TrackPreferences trackPreferences = (TrackPreferences) readTrackByCustomerAndItem((RdrCustomer) CustomerState.getCustomer(),
+								RdrItemType.PRODUCT, productId);
 						UserTrack track = readTrackByCustomerAndItem(
 								(RdrCustomer) CustomerState.getCustomer(),
 								RdrItemType.PRODUCT, productId);
@@ -196,7 +201,9 @@ public class UserTrackServiceImpl implements UserTrackService {
 						}
 						track.setTrackView((Boolean) mapAction.getValue());
 						double userScore = calculateScoreUserItem(track);
-						track.setUserItemScore(userScore);
+						
+						trackPreferences.setCalculScore(userScore);
+						
 						return track;
 					}
 				}

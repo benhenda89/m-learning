@@ -15,41 +15,40 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-
 @Component("rdrCustomerCookieStateFilter")
-public class CustomerCookieStateFilter extends OncePerRequestFilter implements Ordered {
-	
-	@Value("${cookie.Filter.Order}")
-	protected static int order ;
+public class CustomerCookieStateFilter extends OncePerRequestFilter implements
+		Ordered {
 
-	@Resource(name="rdrCustomerCookieStateRequest")
+	@Value("${cookie.Filter.Order}")
+	protected static int order;
+
+	@Resource(name = "rdrCustomerCookieStateRequest")
 	protected CustomerCookieStateRequestProcessor cookiefiltre;
-	
+
 	@Resource(name = "blCookieUtils")
 	protected CookieUtils cookieUtils;
-	
-    public void doFilterInternal(HttpServletRequest baseRequest, HttpServletResponse baseResponse, FilterChain chain) throws IOException, ServletException {
-		 ServletWebRequest request = new ServletWebRequest(baseRequest, baseResponse);
-			
 
-		 try {
+	public void doFilterInternal(HttpServletRequest baseRequest,
+			HttpServletResponse baseResponse, FilterChain chain)
+			throws IOException, ServletException {
+		ServletWebRequest request = new ServletWebRequest(baseRequest,
+				baseResponse);
 
-			 cookiefiltre.process(request);
-			 
-			 
-			 
-	         chain.doFilter(baseRequest, baseResponse);
-	        } finally {
-	        //	Cookiefiltre.postProcess(request)  ;
-	            }
-	
-    }
-	
-	
+		try {
+
+			cookiefiltre.process(request);
+
+			chain.doFilter(baseRequest, baseResponse);
+		} finally {
+			// Cookiefiltre.postProcess(request) ;
+		}
+
+	}
+
 	public int getOrder() {
-		//FilterChainOrder has been dropped from Spring Security 3
-        //return FilterChainOrder.REMEMBER_ME_FILTER+1;
-        return order;
+		// FilterChainOrder has been dropped from Spring Security 3
+		// return FilterChainOrder.REMEMBER_ME_FILTER+1;
+		return order;
 	}
 
 }

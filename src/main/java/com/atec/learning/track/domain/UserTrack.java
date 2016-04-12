@@ -23,20 +23,9 @@ public interface UserTrack extends Serializable{
 	
 	/**
 	 * get {@link Customer}.
-	 * @return
+	 * @returns
 	 */
-	public RdrCustomer getCustomer();
 	
-	/**
-	 * set the customer{@link Customer}.
-	 * @param customer
-	 */
-	public void setCustomer(RdrCustomer customer);
-	
-	/**
-	 * get the item type, PRODUCT ...
-	 * @return
-	 */
 	public RdrItemType getItemType();
 	
 	/**
@@ -109,11 +98,5 @@ public interface UserTrack extends Serializable{
 	 * get the score of User-Item.
 	 * @return
 	 */
-	public double getUserItemScore();
 	
-	/**
-	 * get the score of User-Item.
-	 * @param userItemScore
-	 */
-	public void setUserItemScore(double userItemScore);
 }
