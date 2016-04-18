@@ -28,9 +28,6 @@ public class CustomerCookieStateRequestProcessor extends AbstractBroadleafWebReq
 	@Resource(name = "blCookieUtils")
 	protected CookieUtils cookieUtils;
 	
-//	@Resource(name="blCustomerStateRequestProcessor")
-//	protected CustomerStateRequestProcessor customer;
-	
 	@Value("${cookie.Max.Age}")
 	protected static String cookieMaxAge ;
 	

@@ -16,18 +16,17 @@ import org.broadleafcommerce.common.web.BroadleafRequestContext;
 import org.broadleafcommerce.core.catalog.service.CatalogService;
 import org.broadleafcommerce.core.rating.domain.RatingSummary;
 import org.broadleafcommerce.core.rating.service.type.RatingType;
+import org.broadleafcommerce.profile.core.domain.Customer;
 import org.broadleafcommerce.profile.web.core.CustomerState;
 import org.springframework.stereotype.Service;
 
 import com.atec.learning.track.dao.UserTrackDao;
-import com.atec.learning.track.domain.TrackPreferences;
-import com.atec.learning.track.domain.TrackReferencesImpl;
 import com.atec.learning.track.domain.UserNote;
 import com.atec.learning.track.domain.UserTrack;
 import com.atec.learning.track.domain.type.RdrItemType;
 import com.atec.learning.track.domain.type.RdrUserAction;
 import com.atec.learning.track.exceptions.UserTrackExceptions;
-import com.rayondart.core.profile.domain.RdrCustomer;
+
 import com.rayondart.core.rating.service.RdrRatingService;
 
 @Service("rdrUserTrackService")
@@ -47,40 +46,34 @@ public class UserTrackServiceImpl implements UserTrackService {
 	@Resource(name = "blCatalogService")
 	private CatalogService catalogService;
 
-	
 	public UserTrack create() {
 		return userTrackDao.create();
 	}
 
-	
 	public UserTrack readTrackById(Long userTrackId) {
 		return userTrackDao.readTrackById(userTrackId);
 	}
 
-	
 	public UserTrack add(UserTrack userTrack) {
 		return userTrackDao.add(userTrack);
 	}
 
-	
 	public void remove(UserTrack userTrack) {
 		userTrackDao.remove(userTrack);
 	}
 
-	
-	public UserTrack readTrackByCustomerAndItem(RdrCustomer customer,
+	public UserTrack readTrackByCustomerAndItem(Customer customer,
 			RdrItemType itemType, Long itemValue) {
 		return userTrackDao.readTrackByCustomerAndItem(customer.getId(),
 				itemType.getType(), itemValue);
 	}
 
-	
-	public List<UserTrack> readUserTracksByCustomer(RdrCustomer customer) {
+	public List<UserTrack> readUserTracksByCustomer(Customer customer) {
 		return readUserTracksByCustomer(customer);
 	}
 
 	// method score calculating by user and item
-	
+
 	public double calculateScoreUserItem(UserTrack userTrack)
 			throws UserTrackExceptions {
 		double userScore = 0L; // final Score.
@@ -124,7 +117,6 @@ public class UserTrackServiceImpl implements UserTrackService {
 								Double.parseDouble(UserNote.ACHAT.getType()));
 			}
 		}
-		
 		return userScore;// the final value of userTrack
 	}
 
@@ -182,10 +174,8 @@ public class UserTrackServiceImpl implements UserTrackService {
 						LOG.trace(productId + ": ");
 
 						LOG.trace(mapAction.getValue());
-						TrackPreferences trackPreferences = (TrackPreferences) readTrackByCustomerAndItem((RdrCustomer) CustomerState.getCustomer(),
-								RdrItemType.PRODUCT, productId);
 						UserTrack track = readTrackByCustomerAndItem(
-								(RdrCustomer) CustomerState.getCustomer(),
+								(Customer) CustomerState.getCustomer(),
 								RdrItemType.PRODUCT, productId);
 
 						// sil n'existe pas , nous allons créer une nouvelle
@@ -201,9 +191,7 @@ public class UserTrackServiceImpl implements UserTrackService {
 						}
 						track.setTrackView((Boolean) mapAction.getValue());
 						double userScore = calculateScoreUserItem(track);
-						
-						trackPreferences.setCalculScore(userScore);
-						
+						track.setUserItemScore(userScore);
 						return track;
 					}
 				}

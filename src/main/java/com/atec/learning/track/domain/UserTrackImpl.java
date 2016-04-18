@@ -12,6 +12,7 @@ import javax.persistence.Table;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.broadleafcommerce.profile.core.domain.Customer;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -40,7 +41,10 @@ public class UserTrackImpl implements UserTrack{
 	 @Column(name = "TRACK_ID")
 	protected Long id;
 	 
-	
+	@Column(name="CUSTOMER")
+	@ManyToOne
+	@JoinTable(name="Customer")
+	protected Customer customer;
 	
 	@Column(name="ItemType")
 	protected String itemType;
@@ -60,7 +64,8 @@ public class UserTrackImpl implements UserTrack{
 	@Column(name="TrackRated")
 	protected boolean trackRated;
 	
-	
+	@Column(name="UserItemScore")
+	protected double  userItemScore;
 
 	public Long getId() {
 		return id;
@@ -71,6 +76,13 @@ public class UserTrackImpl implements UserTrack{
 	
 	
 
+	public Customer getCustomer() {
+		return customer;
+	}
+	
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
 	
 	
 	
@@ -113,18 +125,22 @@ public class UserTrackImpl implements UserTrack{
 	
 
 	
+	public double getUserItemScore() {
+		return userItemScore;
+	}
 	
+	public void setUserItemScore(double userItemScore) {
+		this.userItemScore = userItemScore;
+	}
 	
 	public void setTrackView(Boolean string) {
 		this.trackView = trackView;
 		
 	}
-	
 	public void setTrackLike(Boolean string) {
 		this.trackLike = trackLike;
 		
 	}
-	
 	public void setTrackRated(Boolean trackRated) {
 		this.trackRated = trackRated;
 		

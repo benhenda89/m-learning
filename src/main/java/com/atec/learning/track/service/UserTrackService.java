@@ -3,10 +3,12 @@ package com.atec.learning.track.service;
 import java.util.List;
 import java.util.Map;
 
+import org.broadleafcommerce.profile.core.domain.Customer;
+
 import com.atec.learning.track.domain.UserTrack;
 import com.atec.learning.track.domain.type.RdrItemType;
 import com.atec.learning.track.exceptions.UserTrackExceptions;
-import com.rayondart.core.profile.domain.RdrCustomer;
+
 
 public interface UserTrackService {
 	
@@ -18,9 +20,9 @@ public interface UserTrackService {
 	
 	public void remove(UserTrack userTrack);
 	
-	public UserTrack readTrackByCustomerAndItem(RdrCustomer customer, RdrItemType itemType, Long itemValue);
+	public UserTrack readTrackByCustomerAndItem(Customer customer, RdrItemType itemType, Long itemValue);
 	
-	public List<UserTrack> readUserTracksByCustomer(RdrCustomer customer);
+	public List<UserTrack> readUserTracksByCustomer(Customer customer);
 	
 	/**
 	 * Persister dans BD , la map User Actions.

@@ -5,7 +5,6 @@ import java.io.Serializable;
 import org.broadleafcommerce.profile.core.domain.Customer;
 
 import com.atec.learning.track.domain.type.RdrItemType;
-import com.rayondart.core.profile.domain.RdrCustomer;
 
 public interface UserTrack extends Serializable{
 	
@@ -23,9 +22,20 @@ public interface UserTrack extends Serializable{
 	
 	/**
 	 * get {@link Customer}.
-	 * @returns
+	 * @return
 	 */
+	public Customer getCustomer();
 	
+	/**
+	 * set the customer{@link Customer}.
+	 * @param customer
+	 */
+	public void setCustomer(Customer customer);
+	
+	/**
+	 * get the item type, PRODUCT ...
+	 * @return
+	 */
 	public RdrItemType getItemType();
 	
 	/**
@@ -98,5 +108,11 @@ public interface UserTrack extends Serializable{
 	 * get the score of User-Item.
 	 * @return
 	 */
+	public double getUserItemScore();
 	
+	/**
+	 * get the score of User-Item.
+	 * @param userItemScore
+	 */
+	public void setUserItemScore(double userItemScore);
 }
