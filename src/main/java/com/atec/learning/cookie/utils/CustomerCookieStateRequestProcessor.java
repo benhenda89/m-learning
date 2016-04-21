@@ -21,6 +21,12 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.WebRequest;
 
 
+/**
+ * 
+ * @author mahbouba
+ *
+ */
+
 
 @Component("rdrCustomerCookieStateRequest")
 public class CustomerCookieStateRequestProcessor extends AbstractBroadleafWebRequestProcessor implements ApplicationEventPublisherAware {

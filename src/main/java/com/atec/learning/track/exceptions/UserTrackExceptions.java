@@ -1,5 +1,11 @@
 package com.atec.learning.track.exceptions;
 
+
+/**
+ * 
+ * @author mahbouba
+ *
+ */
 public class UserTrackExceptions extends Exception{
 
 	/**

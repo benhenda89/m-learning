@@ -15,6 +15,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+
+/**
+ * 
+ * @author mahbouba
+ *
+ */
+
+
 @Component("rdrCustomerCookieStateFilter")
 public class CustomerCookieStateFilter extends OncePerRequestFilter implements
 		Ordered {

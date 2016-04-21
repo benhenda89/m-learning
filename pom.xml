@@ -22,7 +22,12 @@
 			<version>3.1.15-GA</version>
 		</dependency>
 
-
+		<dependency>
+			<groupId>org.apache.mahout</groupId>
+			<artifactId>mahout-integration</artifactId>
+			<version>0.12.0</version>
+		</dependency>
+		
 
 		<!-- Mahout core -->
 		<dependency>
@@ -30,7 +35,6 @@
 			<artifactId>mahout-core</artifactId>
 			<version>0.9</version>
 		</dependency>
-
 		<!-- Junit -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -46,8 +50,44 @@
 			<version>1.10</version>
 
 		</dependency>
+
+		<!-- apache poi fichier excel -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.13</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-excelant</artifactId>
+			<version>3.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-examples</artifactId>
+			<version>3.13</version>
+		</dependency>
+		
+		
+
 	</dependencies>
 
 
-	
+
 </project>
