@@ -16,6 +16,7 @@ import org.apache.mahout.cf.taste.neighborhood.UserNeighborhood;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 import org.apache.mahout.cf.taste.recommender.Recommender;
 import org.apache.mahout.cf.taste.similarity.UserSimilarity;
+import org.broadleafcommerce.profile.web.core.CustomerState;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -49,8 +50,6 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 		JDBCDataModel dataModel = new MySQLJDBCDataModel(dataSource,
 				"user_track", "CUSTOMER", "ItemValue", "UserItemScore", null);
 
-		
-
 		// Creating UserSimilarity object.
 		UserSimilarity userSimilarity = new PearsonCorrelationSimilarity(
 				dataModel);
@@ -69,7 +68,7 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 		// Recommend the items for each user
 		for (LongPrimitiveIterator iterator = dataModel.getUserIDs(); iterator
 				.hasNext();) {
-			long userId = iterator.nextLong();
+			Long userId =CustomerState.getCustomer().getId();
 
 			// Generate a list of recommendations for the user
 			List<RecommendedItem> itemRecommendations = genericRecommender
@@ -94,8 +93,5 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 		}
 		return null;
 	}
-	
-	
+
 }
-
-

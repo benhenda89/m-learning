@@ -21,15 +21,19 @@
 			<artifactId>broadleaf-common</artifactId>
 			<version>3.1.15-GA</version>
 		</dependency>
-
-
-
+		<!-- Jdk-tools -->
+		<dependency>
+			<groupId>jdk.tools</groupId>
+			<artifactId>jdk.tools</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<!-- Mahout Integration -->
 		<dependency>
 			<groupId>org.apache.mahout</groupId>
 			<artifactId>mahout-integration</artifactId>
 			<version>0.12.0</version>
 		</dependency>
-		
+
 
 		<!-- Mahout core -->
 		<dependency>
@@ -85,8 +89,8 @@
 			<artifactId>poi-examples</artifactId>
 			<version>3.13</version>
 		</dependency>
-		
-		
+
+
 
 	</dependencies>
 
