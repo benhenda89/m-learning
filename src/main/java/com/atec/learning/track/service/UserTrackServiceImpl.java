@@ -16,6 +16,7 @@ import org.broadleafcommerce.common.web.BroadleafRequestContext;
 import org.broadleafcommerce.core.catalog.service.CatalogService;
 import org.broadleafcommerce.core.rating.domain.RatingSummary;
 import org.broadleafcommerce.core.rating.service.type.RatingType;
+import org.broadleafcommerce.profile.core.domain.Customer;
 import org.broadleafcommerce.profile.web.core.CustomerState;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +26,6 @@ import com.atec.learning.track.domain.UserTrack;
 import com.atec.learning.track.domain.type.RdrItemType;
 import com.atec.learning.track.domain.type.RdrUserAction;
 import com.atec.learning.track.exceptions.UserTrackExceptions;
-import com.rayondart.core.profile.domain.RdrCustomer;
 import com.rayondart.core.rating.service.RdrRatingService;
 
 
@@ -70,14 +70,14 @@ public class UserTrackServiceImpl implements UserTrackService {
 	}
 
 	
-	public UserTrack readTrackByCustomerAndItem(RdrCustomer customer,
+	public UserTrack readTrackByCustomerAndItem(Customer customer,
 			RdrItemType itemType, Long itemValue) {
 		return userTrackDao.readTrackByCustomerAndItem(customer.getId(),
 				itemType.getType(), itemValue);
 	}
 
 	
-	public List<UserTrack> readUserTracksByCustomer(RdrCustomer customer) {
+	public List<UserTrack> readUserTracksByCustomer(Customer customer) {
 		return readUserTracksByCustomer(customer);
 	}
 
@@ -184,7 +184,7 @@ public class UserTrackServiceImpl implements UserTrackService {
 
 						LOG.trace(mapAction.getValue());
 						UserTrack track = readTrackByCustomerAndItem(
-								(RdrCustomer) CustomerState.getCustomer(),
+								(Customer) CustomerState.getCustomer(),
 								RdrItemType.PRODUCT, productId);
 
 						// sil n'existe pas , nous allons créer une nouvelle
