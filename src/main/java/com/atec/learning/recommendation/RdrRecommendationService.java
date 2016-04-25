@@ -1,9 +1,9 @@
 package com.atec.learning.recommendation;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.mahout.cf.taste.common.TasteException;
-import org.springframework.stereotype.Service;
 
 /**
  * 
@@ -14,6 +14,6 @@ import org.springframework.stereotype.Service;
 
 public interface RdrRecommendationService {
 	
-	public Long recommendation() throws IOException, TasteException;
+	public List<Long> recommendation() throws IOException, TasteException;
 	
 }

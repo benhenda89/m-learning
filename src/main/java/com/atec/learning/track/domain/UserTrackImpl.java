@@ -17,7 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
 import com.atec.learning.track.domain.type.RdrItemType;
-import com.rayondart.core.profile.domain.RdrCustomer;
+
 
 @Entity
 @Table(name = "USER_TRACK")
