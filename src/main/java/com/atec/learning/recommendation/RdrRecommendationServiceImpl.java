@@ -1,6 +1,7 @@
 package com.atec.learning.recommendation;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -40,7 +41,7 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 	private static final Log LOG = LogFactory
 			.getLog(RdrRecommendationServiceImpl.class);
 
-	public Long recommendation() throws IOException, TasteException {
+	public List<Long> recommendation() throws IOException, TasteException {
 		// Create a data source from the Mysql
 		MysqlDataSource dataSource = new MysqlDataSource();
 		dataSource.setServerName("localhost");
@@ -65,6 +66,7 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 		Recommender genericRecommender = new GenericUserBasedRecommender(
 				dataModel, userNeighborhood, userSimilarity);
 
+		List<Long> listItems= new ArrayList<Long>();
 		// Recommend the items for each user
 		for (LongPrimitiveIterator iterator = dataModel.getUserIDs(); iterator
 				.hasNext();) {
@@ -85,13 +87,14 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 							+ recommendedItem.getItemID()
 							+ " Strength of the preference: %n"
 							+ recommendedItem.getValue());
-					return recommendedItem.getItemID();
+			
+					listItems.add( recommendedItem.getItemID());
 
 				}
 			}
 
 		}
-		return null;
+		return listItems;
 	}
 
 }
