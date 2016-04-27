@@ -1,4 +1,4 @@
-package com.atec.learning.recommendation;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,6 +21,7 @@ import org.broadleafcommerce.profile.web.core.CustomerState;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.atec.learning.recommendation.RdrRecommendationService;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 /**
@@ -65,7 +66,6 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 		// userNeighborhood and the userSimilarity
 		Recommender genericRecommender = new GenericUserBasedRecommender(
 				dataModel, userNeighborhood, userSimilarity);
-
 		List<Long> listItems= new ArrayList<Long>();
 		// Recommend the items for each user
 		for (LongPrimitiveIterator iterator = dataModel.getUserIDs(); iterator
@@ -82,13 +82,15 @@ public class RdrRecommendationServiceImpl implements RdrRecommendationService {
 				LOG.trace("No recommendations for this user.");
 			} else {
 				// Display the list of recommendations
+				
+				
 				for (RecommendedItem recommendedItem : itemRecommendations) {
 					LOG.trace("Recommened Item Id ."
 							+ recommendedItem.getItemID()
 							+ " Strength of the preference: %n"
-							+ recommendedItem.getValue());
-			
-					listItems.add( recommendedItem.getItemID());
+							+recommendedItem.getValue());
+				
+					listItems.add(recommendedItem.getItemID());
 
 				}
 			}

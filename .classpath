@@ -22,25 +22,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Blcshop/products/tomcat/apache-tomcat-8.0.23/lib/servlet-api.jar"/>
-	<classpathentry kind="src" path="/broadleaf-profile"/>
-	<classpathentry kind="src" path="/broadleaf-framework"/>
 	<classpathentry kind="src" path="/broadleaf-profile-web"/>
-	<classpathentry kind="src" path="/core"/>
-	<classpathentry kind="lib" path="C:/Users/mahbouba/Downloads/mysql-connector-java-5.1.38/mysql-connector-java-5.1.38-bin.jar"/>
-	<classpathentry kind="src" path="/site"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Blcshop/products/maven/repository/org/apache/ant/ant/1.8.2/ant-1.8.2.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.apache.ant"/>
-			<attribute name="maven.artifactId" value="ant"/>
-			<attribute name="maven.version" value="1.8.2"/>
-			<attribute name="maven.scope" value="compile"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
