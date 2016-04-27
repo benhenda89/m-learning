@@ -18,12 +18,14 @@ public class RunnableExample {
 
     public static void main(String[] args) {
 
+    	
+    	
        
     	final RdrClassificationUtils<Long, Long> bayes =
                 new BayesClassifier<Long, Long>();
     
        List<Product> products=catalogservice.findAllProducts();
-    	Map<Long, List<Long>> categoryProduts = new HashMap<Long, List<Long>>();
+    	Map<Long, List<Long>> categoryProducts = new HashMap<Long, List<Long>>();
 		
 		for (Product productId:products)
 		{
@@ -31,11 +33,12 @@ public class RunnableExample {
 			Product product = catalogservice.findProductById(productId.getId());
 			if(Objects.nonNull(product)){
 				Category cat = product.getCategory();
-				 bayes.learn(cat.getId(),products);
-				if(categoryProduts.get(cat.getId()) != null){
-					List<Long> prods = categoryProduts.get(cat.getId());
+				 
+				if(categoryProducts.get(cat.getId()) != null){
+					List<Long> prods = categoryProducts.get(cat.getId());
+					bayes.learn(cat.getId(),prods);///////
 						prods.add(productId.getId());
-						categoryProduts.put(cat.getId(), prods);
+						categoryProducts.put(cat.getId(), prods);
 						 System.out.println( // will output "positive"
 					                bayes.classify(prods));
 						 ((BayesClassifier<Long, Long>) bayes).classifyDetailed(
@@ -43,7 +46,7 @@ public class RunnableExample {
 				} else {
 					List<Long> prods = new ArrayList<Long>();
 					prods.add(productId.getId());
-					categoryProduts.put(cat.getId(), prods);
+					categoryProducts.put(cat.getId(), prods);
 					 System.out.println( // will output "positive"
 				                bayes.classify(prods));
 				}
